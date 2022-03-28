@@ -1,0 +1,35 @@
+<h1 id="tableLabel">Organisations data</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!organisations"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="organisations">
+  <thead>
+    <tr>
+      <th>Organisation Name</th>
+      <th>Organisation Number</th>
+      <th>AddressLine1</th>
+      <th>AddressLine2</th>
+      <th>AddressLine3</th>
+      <th>AddressLine4</th>
+      <th>Town</th>
+      <th>PostCode</th>
+      <th>No: of Employees</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let organisation of organisations| paginate: { itemsPerPage: 10, currentPage: p }">
+      <td>{{ organisations.OrganisationName }}</td>
+      <td>{{ organisations.OrganisationNumber }}</td>
+      <td>{{ organisations.AddressLine1 }}</td>
+      <td>{{ organisations.AddressLine2 }}</td>
+      <td>{{ organisations.AddressLine3 }}</td>
+      <td>{{ organisations.AddressLine4 }}</td>
+      <td>{{ organisations.Town }}</td>
+      <td>{{ organisations.PostCode }}</td>
+      <td>{{ organisations.EmployeeCount }}</td>
+    </tr>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </tbody>
+</table>
